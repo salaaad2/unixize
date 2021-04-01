@@ -51,6 +51,7 @@
 #include <ctype.h>
 #include <stddef.h>
 #include <string.h>
+#include <bsd/string.h>
 
 #include "c_lfiles.h"
 #include "c_subst.h"

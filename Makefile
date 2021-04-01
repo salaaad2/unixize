@@ -25,11 +25,11 @@ OBJS_DIR		:= obj/
 MAN_DIR			:= man/
 
 CC				?= cc
-CFLAGS			+= -std=c89
-CFLAGS			+= -Wall
-CFLAGS			+= -Wextra
-CFLAGS			+= -Werror
-CFLAGS			+= -pedantic
+#CFLAGS			+= -std=c89
+#CFLAGS			+= -Wall
+#CFLAGS			+= -Wextra
+#CFLAGS			+= -Werror
+#CFLAGS			+= -pedantic
 CFLAGS			+= -march=native -O2 -pipe
 
 MKDIR			:= mkdir -p
@@ -56,7 +56,7 @@ ${OBJS_DIR}%.c.o: ${SRCS_DIR}%.c ${INCS} Makefile
 	${CC} -c ${CFLAGS} -o $@ $<
 
 ${TARGET}: ${OBJS}
-	${CC} ${CFLAGS} -o ${TARGET} ${OBJS}
+	${CC} ${CFLAGS} -o ${TARGET} ${OBJS} -lbsd
 
 ${MAN_DIR}${MAN}:
 	${GZIP} ${MAN_DIR}${TARGET}.1
