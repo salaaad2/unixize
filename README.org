@@ -16,16 +16,8 @@ to get a list of options.
 - GNU Make
 
 * Installation
-You can get *unixize* either through ~git~ or ~fossil~.
+You can get *unixize* either through ~git~
 
-For ~fossil~ use:
-#+BEGIN_SRC shell
-mkdir unixize
-cd unixize
-fossil clone https://chiselapp.com/user/JozanLeClerc/repository/unixize unixize.fossil
-fossil open --force unixize.fossil
-#+END_SRC
-or for ~git~:
 #+BEGIN_SRC shell
 git clone git://jozanleclerc.xyz/jozan/unixize.git
 cd unixize
@@ -34,11 +26,6 @@ Then build the program:
 #+BEGIN_SRC shell
 make
 sudo make install clean
-#+END_SRC
-Note that on BSD systems you want to use ~gmake~ instead of ~make~:
-#+BEGIN_SRC shell
-gmake
-sudo gmake install clean
 #+END_SRC
 
 * Usage

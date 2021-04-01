@@ -53,8 +53,11 @@
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
-#include <string.h>
-#include <bsd/string.h>
+#ifdef __linux__
+# include <bsd/string.h>
+#else
+# include <string.h>
+#endif
 #include <unistd.h>
 
 #include "c_lfiles.h"

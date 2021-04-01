@@ -49,8 +49,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <bsd/string.h>
-#include <string.h>
+#ifdef __linux__
+# include <bsd/string.h>
+#else
+# include <string.h>
+#endif
 #include <unistd.h>
 
 #include "c_opts.h"

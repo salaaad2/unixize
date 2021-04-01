@@ -19,6 +19,8 @@
 .DEFAULT_GOAL	:= all
 SHELL			:= /bin/sh
 
+OS				= $(shell uname)
+
 DESTDIR			:=
 SRCS_DIR		:= src/
 OBJS_DIR		:= obj/
@@ -55,8 +57,14 @@ ${OBJS_DIR}%.c.o: ${SRCS_DIR}%.c ${INCS} Makefile
 	@${MKDIR} ${OBJS_DIR}
 	${CC} -c ${CFLAGS} -o $@ $<
 
+ifeq (${OS}, FreeBSD)
+${TARGET}: ${OBJS}
+	${CC} ${CFLAGS} -o ${TARGET} ${OBJS}
+endif
+ifeq (${OS}, Linux)
 ${TARGET}: ${OBJS}
 	${CC} ${CFLAGS} -o ${TARGET} ${OBJS} -lbsd
+endif
 
 ${MAN_DIR}${MAN}:
 	${GZIP} ${MAN_DIR}${TARGET}.1

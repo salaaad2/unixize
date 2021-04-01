@@ -50,8 +50,11 @@
 
 #include <ctype.h>
 #include <stddef.h>
-#include <string.h>
-#include <bsd/string.h>
+#ifdef __linux__
+# include <bsd/string.h>
+#else
+# include <string.h>
+#endif
 
 #include "c_lfiles.h"
 #include "c_subst.h"
