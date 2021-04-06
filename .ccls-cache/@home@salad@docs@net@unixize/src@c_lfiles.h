@@ -13,7 +13,7 @@
  *
  * SPDX-License-Identifier: BSD-3-Clause
  *
- * Copyright (c) 2020 Joe
+ * Copyright © 2020 Joe
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,40 +38,19 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * unixize: src/c_unixize.h
- * 2020-11-02 23:07
+ * unixize: src/c_lfiles.h
+ * 2020-11-05 18:06
  * Joe
  */
 
-#ifndef __C_UNIXIZE_H__
-#define __C_UNIXIZE_H__
+#ifndef __C_LFILES_H__
+#define __C_LFILES_H__
 
-#include <sys/param.h>
+#include "c_unixize.h"
 
-typedef unsigned char bool_t;
+void	c_lfiles_add_back(struct lfiles_s**, struct lfiles_s*);
+void	c_lfiles_clear(struct lfiles_s**);
+struct lfiles_s* c_lfiles_new(const char[], unsigned char);
+struct lfiles_s* c_lfiles_gather(const char[]);
 
-enum bool_e {
-	FALSE,
-	TRUE
-};
-
-struct opts_s {
-	bool_t	confirm;
-	bool_t	hidden;
-	bool_t	hyphen;
-	bool_t	preserve;
-	bool_t	pretend;
-	bool_t	rverbose;
-	bool_t	recursive;
-	bool_t	verbose;
-	char	dir[MAXPATHLEN + 1];
-	unsigned char cxx;
-};
-
-struct lfiles_s {
-	struct lfiles_s* next;
-	char*	filename;
-	unsigned char filetype;
-};
-
-#endif /* ifndef __C_UNIXIZE_H__ */
+#endif /* end of include guard: __C_LFILES_H__ */

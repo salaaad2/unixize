@@ -26,12 +26,11 @@ SRCS_DIR		:= src/
 OBJS_DIR		:= obj/
 MAN_DIR			:= man/
 
-CC				?= cc
-#CFLAGS			+= -std=c89
-#CFLAGS			+= -Wall
-#CFLAGS			+= -Wextra
-#CFLAGS			+= -Werror
-#CFLAGS			+= -pedantic
+CC				 = cc
+CFLAGS			+= -Wall
+CFLAGS			+= -Wextra
+CFLAGS			+= -Werror
+CFLAGS			+= -pedantic
 CFLAGS			+= -march=native -O2 -pipe
 
 MKDIR			:= mkdir -p

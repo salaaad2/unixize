@@ -38,40 +38,45 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * unixize: src/c_unixize.h
- * 2020-11-02 23:07
+ * unixize: src/c_subst.h
+ * 2020-11-08 02:48
  * Joe
+ *
+ * This is the main function and entrypoint of the program.
  */
 
-#ifndef __C_UNIXIZE_H__
-#define __C_UNIXIZE_H__
+#ifndef __C_SUBST_H__
+#define __C_SUBST_H__
 
-#include <sys/param.h>
+#include "c_unixize.h"
 
-typedef unsigned char bool_t;
+#define C_CHARSET_VALID	"_-."
+#define C_CHARSET_A \
+	"\x80\x81\x82\x83\x84\xa0\xa1\xa2\xa3\xa4"
+#define C_CHARSET_AA \
+	"\x85\xa5"
+#define C_CHARSET_O \
+	"\x92\x93\x94\x95\x96\x98\xb2\xb3\xb4\xb5\xb6\xb8"
+#define C_CHARSET_AE \
+	"\x86\xa6"
+#define C_CHARSET_N \
+	"\x91\xb1"
+#define C_CHARSET_DH \
+	"\x90\xb0"
+#define C_CHARSET_TH \
+	"\x9e\xbe"
+#define C_CHARSET_C \
+	"\x87\xa7"
+#define C_CHARSET_E \
+	"\x88\x89\x8a\x8b\xa8\xa9\xaa\xab"
+#define C_CHARSET_U \
+	"\x99\x9a\x9b\x9c\xb9\xba\xbb\xbc"
+#define C_CHARSET_I \
+	"\x8c\x8d\x8e\x8f\xac\xab\xac\xad"
+#define C_CHARSET_Y \
+	"\x9d\xbd\xbf"
 
-enum bool_e {
-	FALSE,
-	TRUE
-};
+struct lfiles_s* c_subst_filenames(struct lfiles_s*, const bool_t,
+	const bool_t, const unsigned char);
 
-struct opts_s {
-	bool_t	confirm;
-	bool_t	hidden;
-	bool_t	hyphen;
-	bool_t	preserve;
-	bool_t	pretend;
-	bool_t	rverbose;
-	bool_t	recursive;
-	bool_t	verbose;
-	char	dir[MAXPATHLEN + 1];
-	unsigned char cxx;
-};
-
-struct lfiles_s {
-	struct lfiles_s* next;
-	char*	filename;
-	unsigned char filetype;
-};
-
-#endif /* ifndef __C_UNIXIZE_H__ */
+#endif /* ifndef __C_SUBST_H__ */

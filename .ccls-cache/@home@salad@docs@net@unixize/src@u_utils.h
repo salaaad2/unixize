@@ -13,7 +13,7 @@
  *
  * SPDX-License-Identifier: BSD-3-Clause
  *
- * Copyright (c) 2020 Joe
+ * Copyright © 2020 Joe
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,40 +38,21 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * unixize: src/c_unixize.h
- * 2020-11-02 23:07
+ * unixize: src/u_utils.h
  * Joe
+ * 2020-11-05 19:28
  */
 
-#ifndef __C_UNIXIZE_H__
-#define __C_UNIXIZE_H__
+#include <stddef.h>
 
-#include <sys/param.h>
+#include "c_unixize.h"
 
-typedef unsigned char bool_t;
-
-enum bool_e {
-	FALSE,
-	TRUE
-};
-
-struct opts_s {
-	bool_t	confirm;
-	bool_t	hidden;
-	bool_t	hyphen;
-	bool_t	preserve;
-	bool_t	pretend;
-	bool_t	rverbose;
-	bool_t	recursive;
-	bool_t	verbose;
-	char	dir[MAXPATHLEN + 1];
-	unsigned char cxx;
-};
-
-struct lfiles_s {
-	struct lfiles_s* next;
-	char*	filename;
-	unsigned char filetype;
-};
-
-#endif /* ifndef __C_UNIXIZE_H__ */
+void	u_memdel(void**);
+void	u_dump_errno(void);
+void	u_dump_errno_path(const char[]);
+void	u_del_nargv(char** nargv);
+char**	u_get_nargv(struct opts_s*);
+void	u_inc_path(char[], const char[]);
+void	u_dec_path(char[]);
+bool_t	u_ischarset(const int, const char[]);
+bool_t	u_isucharset(const unsigned char, const char[]);
